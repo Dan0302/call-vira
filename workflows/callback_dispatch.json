@@ -1,0 +1,36 @@
+{
+  "name": "Callback Dispatch",
+  "nodes": [
+    {
+      "name": "New Callback Request",
+      "type": "trigger",
+      "parameters": {
+        "event": "callback_request"
+      }
+    },
+    {
+      "name": "Create Calendar Entry",
+      "type": "function",
+      "parameters": {
+        "code": "// Logik zur Kalendereintragung oder R\u00fcckrufliste"
+      }
+    },
+    {
+      "name": "Notify Support",
+      "type": "email",
+      "parameters": {
+        "to": "support@call-vira.com",
+        "subject": "Neuer R\u00fcckruf geplant",
+        "body": "Ein R\u00fcckruf wurde automatisch in den Kalender eingetragen."
+      }
+    }
+  ],
+  "connections": {
+    "New Callback Request": [
+      "Create Calendar Entry"
+    ],
+    "Create Calendar Entry": [
+      "Notify Support"
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "name": "Incoming Call Handler",
+  "nodes": [
+    {
+      "name": "Webhook Eingang",
+      "type": "webhook",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "incoming-call"
+      }
+    },
+    {
+      "name": "Transkription",
+      "type": "function",
+      "parameters": {
+        "code": "// Nutzt Whisper API zur Transkription"
+      }
+    },
+    {
+      "name": "Intent erkennen (GPT)",
+      "type": "function",
+      "parameters": {
+        "code": "// GPT analysiert den transkribierten Text"
+      }
+    },
+    {
+      "name": "Antwort generieren (Polly)",
+      "type": "function",
+      "parameters": {
+        "code": "// Antworttext wird in Sprache umgewandelt"
+      }
+    },
+    {
+      "name": "R\u00fcckgabe an Anrufer",
+      "type": "respond",
+      "parameters": {
+        "responseFormat": "audio"
+      }
+    }
+  ],
+  "connections": {
+    "Webhook Eingang": [
+      "Transkription"
+    ],
+    "Transkription": [
+      "Intent erkennen (GPT)"
+    ],
+    "Intent erkennen (GPT)": [
+      "Antwort generieren (Polly)"
+    ],
+    "Antwort generieren (Polly)": [
+      "R\u00fcckgabe an Anrufer"
+    ]
+  }
+}

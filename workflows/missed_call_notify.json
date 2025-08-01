@@ -1,0 +1,26 @@
+{
+  "name": "Missed Call Notification",
+  "nodes": [
+    {
+      "name": "Check Missed Call",
+      "type": "trigger",
+      "parameters": {
+        "event": "missed_call"
+      }
+    },
+    {
+      "name": "Send Email Notification",
+      "type": "email",
+      "parameters": {
+        "to": "support@call-vira.com",
+        "subject": "Verpasster Anruf",
+        "body": "Ein Kunde hat gerade angerufen, aber niemand war erreichbar."
+      }
+    }
+  ],
+  "connections": {
+    "Check Missed Call": [
+      "Send Email Notification"
+    ]
+  }
+}
