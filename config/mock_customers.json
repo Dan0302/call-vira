@@ -1,0 +1,15 @@
+{
+  "call-vira": {
+    "customer_name": "Call-VIRA",
+    "language": "de",
+    "voice": "Vicki",
+    "logo_url": "/static/logo_call_vira.png",
+    "demo_mode": true,
+    "enable_fallback": true,
+    "features": {
+      "appointments": true,
+      "faq": true,
+      "callback_request": true
+    }
+  }
+}
